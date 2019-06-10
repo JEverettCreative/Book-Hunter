@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import SearchBox from "../components/SearchBox";
 import SearchResults from "../components/SearchResults";
+import Wrapper from "../components/Wrapper";
 
 
 class Search extends Component {
@@ -24,10 +25,17 @@ class Search extends Component {
             <Container>
                 <SearchBox></SearchBox>
             </Container>
-            <Container>
-                <h3>Search Results</h3>
-                <SearchResults></SearchResults>
-            </Container>
+            <Wrapper>
+            {this.state.results.map(result => (
+                <SearchResults
+                    title={result.title}
+                    authors={result.authors}
+                    description={result.description}
+                    image={result.image}
+                    link={result.link}
+                />
+                ))} 
+            </Wrapper>
         </>
     }
 }
