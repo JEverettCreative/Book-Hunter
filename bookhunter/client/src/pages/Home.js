@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import LgButton from "../components/LgButton";
 import Container from "../components/Container";
-import Search from "../components/Search";
+import SearchBox from "../components/SearchBox";
 
 function Home () {
     let blueBackground = {
@@ -11,11 +11,16 @@ function Home () {
     };
 
     return (
+        <>
         <div>
             <Jumbotron>
+                <div className="text-center">
                 <h1>Welcome to Book Hunter</h1>
                 <p>Powered by Google Books API</p>
-                <div className="text-center">
+                </div>
+            </Jumbotron>
+            <Container>
+            <div className="text-center container">
                     <LgButton>
                         <Link
                         to="/search"
@@ -27,7 +32,7 @@ function Home () {
                         
                     </LgButton>
 
-                    <LgButton style={blueBackground}>
+                    <LgButton>
                     <Link
                         to="/saved"
                         className={window.location.pathname === "/saved"}
@@ -38,12 +43,11 @@ function Home () {
                         
                     </LgButton>
                 </div>
-            </Jumbotron>
-            <Container>
-                <Search></Search>
+                
             </Container>
             
         </div>
+        </>
     )
 }
 

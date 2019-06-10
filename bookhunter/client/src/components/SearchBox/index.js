@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search(props) {
+function SearchBox(props) {
     return (
         <div>
             <h4>Go Hunting!</h4>
@@ -26,4 +26,4 @@ function Search(props) {
     )
 }
 
-export default Search;
+export default SearchBox;
