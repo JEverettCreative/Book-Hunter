@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function LgButton({ children }) {
+function LgButton({ props, children }) {
     return(
-        <button className="btn btn-lg">
+        <button className="btn btn-lg btn-success">
             { children }
         </button>
     )
