@@ -15,9 +15,13 @@ class Search extends Component {
         error: ""
     }
 
+    handleInputChange = event => {
+        this.setState({ search: event.target.value });
+      };
+    
+
     handleSearchSubmit = event => {
         event.preventDefault();
-        debugger;
         GoogleAPI.huntBook(this.state.search)
             .then(res => {
                 debugger;
@@ -39,6 +43,7 @@ class Search extends Component {
             </Jumbotron>
             <Container>
                 <SearchBox
+                handleInputChange={this.handleInputChange}
                 handleSearchSubmit={this.handleSearchSubmit}
                 />
             </Container>

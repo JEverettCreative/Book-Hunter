@@ -9,6 +9,7 @@ function SearchBox(props) {
                 <label htmlFor="books">Book</label>
                 <input
                     value={props.search}
+                    onChange={props.handleInputChange}
                     name="book"
                     type="text"
                     className="form-control"
