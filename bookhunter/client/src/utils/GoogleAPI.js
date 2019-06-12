@@ -1,9 +1,9 @@
 import axios from "axios";
 
-let key = process.env.API_KEY;
+const key = process.env.REACT_APP_API_KEY;
 
 export default {
     huntBook: function(search) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + search + ":keyes&key=" + key);
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + search + "&MaxResults" + key);
     }
 };

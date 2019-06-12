@@ -15,6 +15,11 @@ class Search extends Component {
         error: ""
     }
 
+    componentDidMount() {
+        GoogleAPI.huntBook("To Kill a Mockingbird");
+      }
+    
+
     handleInputChange = event => {
         this.setState({ search: event.target.value });
       };
@@ -24,11 +29,11 @@ class Search extends Component {
         event.preventDefault();
         GoogleAPI.huntBook(this.state.search)
             .then(res => {
-                debugger;
                 if (res.data.status === "error") {
                     throw new Error(res.data.message);
                 }
-                this.setState({results: res.data.message, error: ""});
+                this.setState({results: res.data.items, error: ""});
+                console.log(this.state.results);
             })
             .catch(err => this.setState({error: err.message}));
     };
@@ -50,6 +55,7 @@ class Search extends Component {
             <Wrapper>
             {this.state.results.map(result => (
                 <SearchResults
+                    key={result.id}
                     title={result.title}
                     author={result.author}
                     description={result.description}
