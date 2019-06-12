@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 import LgButton from "../components/LgButton";
 import Container from "../components/Container";
-import SearchBox from "../components/SearchBox";
+
 
 function Home () {
-    let blueBackground = {
-        backgroundColor: '#5bc0de',
-    };
 
     return (
         <>

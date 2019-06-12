@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import GoogleAPI from "../utils/GoogleAPI";
 import Jumbotron from "../components/Jumbotron";
 import Container from "../components/Container";
 import SearchBox from "../components/SearchBox";
@@ -14,6 +15,20 @@ class Search extends Component {
         error: ""
     }
 
+    handleSearchSubmit = event => {
+        event.preventDefault();
+        debugger;
+        GoogleAPI.huntBook(this.state.search)
+            .then(res => {
+                debugger;
+                if (res.data.status === "error") {
+                    throw new Error(res.data.message);
+                }
+                this.setState({results: res.data.message, error: ""});
+            })
+            .catch(err => this.setState({error: err.message}));
+    };
+
     render() {
         return <>
             <Jumbotron>
@@ -23,13 +38,15 @@ class Search extends Component {
                 </div>
             </Jumbotron>
             <Container>
-                <SearchBox></SearchBox>
+                <SearchBox
+                handleSearchSubmit={this.handleSearchSubmit}
+                />
             </Container>
             <Wrapper>
             {this.state.results.map(result => (
                 <SearchResults
                     title={result.title}
-                    authors={result.authors}
+                    author={result.author}
                     description={result.description}
                     image={result.image}
                     link={result.link}
