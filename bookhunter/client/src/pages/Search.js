@@ -34,6 +34,12 @@ class Search extends Component {
                 }
                 this.setState({results: res.data.items, error: ""});
                 console.log(this.state.results);
+                console.log(this.state.results[0].volumeInfo.title);
+                console.log(this.state.results[0].volumeInfo.description);
+                console.log(this.state.results[0].id);
+                console.log(this.state.results[0].selfLink);
+                console.log(this.state.results[0].volumeInfo.authors[0]);
+                console.log(this.state.results[0].volumeInfo.imageLinks.thumbnail);
             })
             .catch(err => this.setState({error: err.message}));
     };
@@ -56,7 +62,7 @@ class Search extends Component {
             {this.state.results.map(result => (
                 <SearchResults
                     key={result.id}
-                    title={result.title}
+                    title={result.volumeInfo.title}
                     author={result.author}
                     description={result.description}
                     image={result.image}

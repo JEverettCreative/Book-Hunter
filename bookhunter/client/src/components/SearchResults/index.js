@@ -5,7 +5,7 @@ function SearchResults(props) {
     return (
         <div className="book-box">
             <div className="img-container">
-                <img alt={props.title} src={props.image} />
+                <img alt={props.id} src={props.image} />
             </div>
             <div className="description">
                 <p>{props.description}</p>
